@@ -2,7 +2,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AccountService } from './_services/account.service';
 import { User } from './_models/user';
-import { JsonPipe } from '@angular/common';
+
 
 @Component({
   selector: 'app-root',
@@ -11,8 +11,7 @@ import { JsonPipe } from '@angular/common';
 })
 export class AppComponent implements OnInit {
   title = 'Dating App';
-
-
+  users:any;
 
   constructor( private accountService: AccountService) {
 
