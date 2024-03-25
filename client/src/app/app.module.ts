@@ -22,6 +22,8 @@ import { TabsModule } from 'ngx-bootstrap/tabs';
 import { MemberEditComponent } from './members/member-edit/member-edit.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown'
+import { LoadingInterceptor } from './_interceptors/loading.interceptor';
+import { NgxSpinnerModule } from 'ngx-spinner';
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,7 +37,8 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown'
     NotFoundComponent,
     ServerErrorComponent,
     MemberCardComponent,
-    MemberEditComponent
+    MemberEditComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -45,11 +48,12 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown'
     FormsModule,
     ToastrModule.forRoot(),
     TabsModule,
-    BsDropdownModule
-
+    BsDropdownModule,
+    NgxSpinnerModule
   ],
   providers: [HttpClientModule,
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true },
     {
       provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true
     }],
