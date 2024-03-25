@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using API.DTOs;
 using API.Entities;
 using API.Interfaces;
@@ -17,7 +13,8 @@ namespace API.Data
         private readonly DataContext _context;
         private readonly IMapper _mapper;
 
-        public UserRepository(DataContext context,IMapper mapper){
+        public UserRepository(DataContext context, IMapper mapper)
+        {
             _context = context;
             _mapper = mapper;
         }
@@ -25,7 +22,7 @@ namespace API.Data
         public async Task<MemberDto> GetMemberAsync(string username)
         {
             return await _context.Users
-            .Where(x=>x.UserName == username)
+            .Where(x => x.UserName == username)
             .ProjectTo<MemberDto>(_mapper.ConfigurationProvider)
             .SingleOrDefaultAsync();
         }
@@ -37,22 +34,22 @@ namespace API.Data
             .ToListAsync();
         }
 
-        public  async Task<AppUsers> GetUserByIdAsync(int id)
+        public async Task<AppUsers> GetUserByIdAsync(int id)
         {
-           return await _context.Users.FindAsync(id);
+            return await _context.Users.FindAsync(id);
         }
 
         public async Task<AppUsers> GetUserByUsernameAsync(string userName)
         {
-           return await _context.Users
-           .Include(p=>p.Photos)
-           .SingleOrDefaultAsync(x => x.UserName == userName);
+            return await _context.Users
+            .Include(p => p.Photos)
+            .SingleOrDefaultAsync(x => x.UserName == userName);
         }
 
         public async Task<IEnumerable<AppUsers>> GetUsersAsync()
         {
             return await _context.Users
-            .Include(p=>p.Photos)
+            .Include(p => p.Photos)
             .ToListAsync();
         }
 
@@ -63,7 +60,7 @@ namespace API.Data
 
         public void Update(AppUsers user)
         {
-           _context.Entry(user).State = EntityState.Modified;
+            _context.Entry(user).State = EntityState.Modified;
         }
     }
 }

@@ -134,3 +134,5 @@ A:\DatingApp\API\bin\Debug\net8.0\System.Security.Permissions.dll
 A:\DatingApp\API\bin\Debug\net8.0\Data\UserSeedData.json
 A:\DatingApp\API\bin\Debug\net8.0\AutoMapper.dll
 A:\DatingApp\API\bin\Debug\net8.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+A:\DatingApp\API\bin\Debug\net8.0\CloudinaryDotNet.dll
+A:\DatingApp\API\bin\Debug\net8.0\Newtonsoft.Json.dll
