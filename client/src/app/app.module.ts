@@ -25,6 +25,8 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown'
 import { LoadingInterceptor } from './_interceptors/loading.interceptor';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { PhotoEditorComponent } from './members/photo-editor/photo-editor.component';
+import { FileUploadModule } from 'ng2-file-upload';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,6 +43,7 @@ import { PhotoEditorComponent } from './members/photo-editor/photo-editor.compon
     MemberEditComponent,
     PhotoEditorComponent,
 
+
   ],
   imports: [
     BrowserModule,
@@ -51,7 +54,8 @@ import { PhotoEditorComponent } from './members/photo-editor/photo-editor.compon
     ToastrModule.forRoot(),
     TabsModule,
     BsDropdownModule,
-    NgxSpinnerModule
+    NgxSpinnerModule,
+    FileUploadModule
   ],
   providers: [HttpClientModule,
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
