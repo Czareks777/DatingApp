@@ -1,11 +1,10 @@
-<form #registerForm="ngForm" (ngSubmit)="register()" autocomplete="off">
+<form [formGroup]="registerForm" (ngSubmit)="register()" autocomplete="off">
 <h2 class="text-center text-primary">Sign up</h2>
 <hr>
 <div class="mb-3">
   <input type="text"
   class="form-control"
-  name="username"
-  [(ngModel)]="model.username"
+  formControlName="username"
   placeholder="Username"
   >
 </div>
@@ -13,9 +12,15 @@
 <div class="mb-3">
   <input type="password"
   class="form-control"
-  name="password"
-  [(ngModel)]="model.password"
-  placeholder="password"
+  formControlName="password"
+  placeholder="Password"
+  >
+</div>
+<div class="mb-3">
+  <input type="password"
+  class="form-control"
+  formControlName="confirmPassword"
+  placeholder="Confirm Password"
   >
 </div>
 <div class="text-center">
@@ -23,3 +28,6 @@
   <button class="btn btn-default " type="button" (click)="cancel()">Cancel</button>
 </div>
 </form>
+
+<p>Form Value: {{registerForm.value | json}}</p>
+<p>Form Status: {{registerForm.status | json}}</p>
